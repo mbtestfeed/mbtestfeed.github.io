@@ -1,1 +1,34 @@
+<script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+</script>
+
 <h3>Tool for Carla</h3>
+
+<!-- this is the template of our content. It looks a lot like HTML (but isn't quite) on purpose. You can learn more about using it with Vue here - https://vuejs.org/guide/essentials/template-syntax.html -->
+<div id="app">
+  <input type="text" v-value="total_weight" />
+  <input type="text" v-value="container_weight" />
+  <input type="text" v-value="net_weight" disabled />
+  <input type="text" v-value="price_100g" />
+  <input type="text" v-value="evaluated_price" disabled />
+</div>
+
+<script type="module">
+    import { createApp } from 'vue'
+  
+    createApp({
+      data() {
+        return {
+          total_weight: 0,
+          container_weight: 1,
+          net_weight: 2,
+          price_100g: 3,
+          evaluated_price: 4,
+        }
+      }
+    }).mount('#app')
+</script>
