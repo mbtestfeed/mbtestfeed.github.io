@@ -1,34 +1,62 @@
-<script type="importmap">
-    {
-      "imports": {
-        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
-      }
-    }
-</script>
+<!-- We import the Vue library -->
+<script src="https://unpkg.com/vue@3"></script>
 
 <h3>Tool for Carla</h3>
 
 <!-- this is the template of our content. It looks a lot like HTML (but isn't quite) on purpose. You can learn more about using it with Vue here - https://vuejs.org/guide/essentials/template-syntax.html -->
 <div id="app">
-  <input type="text" v-value="total_weight" />
-  <input type="text" v-value="container_weight" />
-  <input type="text" v-value="net_weight" disabled />
-  <input type="text" v-value="price_100g" />
-  <input type="text" v-value="evaluated_price" disabled />
+    <label for="total_weight">Total Weight (grams)</label>
+    <input v-model:value="total_weight"
+           type="text"
+           @keyup.enter="calculate"/>
+    
+    <label for="container_weight">Container Weight (grams)</label>
+    <input v-model="container_weight"
+           type="text"
+           @keyup.enter="calculate"/>
+
+    <label for="net_weight">Net Weight (grams)</label>
+    <input v-model="net_weight" 
+           disabled/>
+
+    <label for="price_100g">Price per 100g ($)</label>
+    <input v-model="price_100g" 
+           type="text"
+           @keyup.enter="calculate"/>
+
+    <label for="evaluated_price">Evaluated Price ($)</label>
+    <input v-model="evaluated_price"
+           disabled/>
+
+    <button @click="calculate">Calculate</button>
+    <button @click="reset">Reset</button>
 </div>
 
 <script type="module">
-    import { createApp } from 'vue'
-  
-    createApp({
+    Vue.createApp({
       data() {
         return {
-          total_weight: 0,
-          container_weight: 1,
-          net_weight: 2,
-          price_100g: 3,
-          evaluated_price: 4,
+          total_weight: 100,
+          container_weight: 20,
+          net_weight: 0,
+          price_100g: 2,
+          evaluated_price: 0,
         }
-      }
+      },
+      methods: {
+        calculate() {
+          this.net_weight = this.total_weight - this.container_weight;
+          this.evaluated_price = (this.net_weight * (this.price_100g / 100)).toFixed(2);
+        },
+        reset() {
+          this.total_weight = 0;
+          this.container_weight = 0;
+          this.net_weight = 0;
+          this.price_100g = 0;
+          this.evaluated_price = 0;
+
+          this.$refs.total_weight.focus();
+        },
+      },
     }).mount('#app')
 </script>
