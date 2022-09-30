@@ -32,6 +32,24 @@
     <button @click="reset">Reset</button>
 </div>
 
+<!-- This is how you would include an image.
+First you'll need to upload the file the the github repo, commit the change, and wait a couple of minutes until you can see it.
+You should be able to include it in your style tags, as well as your HTML. -->
+<img src="https://mbtestfeed.github.io/edgar-nKC772R_qog-unsplash.jpg" />
+<div class="css_test"></div>
+
+<!-- And we can include CSS like this, if we don't want to do it inline.
+(Traditionally, this is tends to be at the top of the file for the sake of load order, but it can kinda go anywhere...) -->
+<style>
+  .css_test {
+    width: 200px;
+    height: 200px;
+    background-image: url("https://mbtestfeed.github.io/edgar-nKC772R_qog-unsplash.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+</style>
+
 <script type="module">
     Vue.createApp({
       data() {
