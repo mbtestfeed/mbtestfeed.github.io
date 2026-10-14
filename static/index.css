@@ -14,6 +14,8 @@
     --text-color: #000000;
     --link-color: #0000ee;
     --link-clicked-color: #551a8b;
+    --tag-color: #add8e6;
+    --tag-text-color: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +26,8 @@
         --text-color: #ffffff;
         --link-color: #8ab4f8;
         --link-clicked-color: #c58af9;
+        --tag-color: #add8e6;
+        --tag-text-color: #000000;
     }
 }
 
@@ -95,6 +99,24 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .warning-unreleased {
     font-size: 30px;
+}
+
+/* Tag pills: 0.7em text centred in a 1em (of the surrounding text) high
+   pill, never split over lines. */
+.tag,
+a.tag:visited {
+    display: inline-block;
+    height: calc(1em / 0.7);
+    line-height: calc(1em / 0.7);
+    padding: 0 0.6em;
+    margin-right: 0.4em;
+    font-size: 0.7em;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: calc(0.5em / 0.7);
+    background-color: var(--tag-color);
+    color: var(--tag-text-color);
+    text-decoration: none;
 }
 
 .pager {
