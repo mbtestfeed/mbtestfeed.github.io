@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Build version: a4797a48-5b04-4377-b54d-b1ffd73d6e45 -->
+    <!-- Build version: df08044b-d13e-4df3-973b-f4e0c48b2b45 -->
     <title>Gho-Static</title>
     <meta property="og:title" content="Gho-Static">
     <link rel="icon" href="./static/img/favicon.ico" sizes="any">
@@ -29,7 +29,194 @@
     </div>
     <div id="main">
     <div id="content">
-        <h1 id="welcome">Welcome</h1>
+        <h1 id="gho-static">Gho-Static</h1>
+        
+        <p>Gho-Static is a simple static site generator, designed to make deploying easy. You write your pages in markdown, style them with CSS, and Gho-Static builds them into a plain HTML site you can open locally or publish to GitHub Pages with a single command.</p>
+        
+        <h2 id="requirements">Requirements</h2>
+        
+        <ul>
+        <li><a href="https://git-scm.com/downloads">git</a> installed and available from the command line.</li>
+        <li>A <a href="https://github.com">GitHub</a> account you can push to from the command line, with authentication (an SSH key, or the <a href="https://cli.github.com">GitHub CLI</a>) already set up.</li>
+        <li>A basic knowledge of <a href="https://www.markdownguide.org/basic-syntax/">markdown</a> to write your pages, and of CSS if you want to change the styling of your generated site.</li>
+        <li><a href="https://go.dev/dl/">Go</a> 1.27 or later, only if you&rsquo;re running Gho-Static from its source code.</li>
+        </ul>
+        
+        <h2 id="installation">Installation</h2>
+        
+        <h3 id="download-a-published-binary">Download a published binary</h3>
+        
+        <ol>
+        <li>Go to the <a href="https://github.com/mbtestfeed/gho-static/releases">releases page</a> and download the binary for your operating system.</li>
+        <li>On macOS or Linux, make it executable: <code>chmod +x gho-static</code></li>
+        <li>To run it from any folder as just <code>gho-static</code>, move it into a folder on your <code>PATH</code>. <code>~/.local/bin</code> works well, as it doesn&rsquo;t need admin rights:</li>
+        </ol>
+        
+        <pre><code>   mkdir -p ~/.local/bin
+           mv gho-static ~/.local/bin/
+        </code></pre>
+        
+        <p>If <code>gho-static</code> isn&rsquo;t found afterwards, add that folder to your <code>PATH</code> by adding this line to <code>~/.bashrc</code> on Linux, or <code>~/.zshrc</code> on macOS:</p>
+        
+        <pre><code>   export PATH=&quot;$HOME/.local/bin:$PATH&quot;
+        </code></pre>
+        
+        <p>Then open a new terminal. On macOS, if it&rsquo;s blocked as being from an unidentified developer, run <code>xattr -d com.apple.quarantine ~/.local/bin/gho-static</code>. You can also skip this step and run it by its path, e.g. <code>./gho-static</code>.</p>
+        
+        <h4 id="on-windows">On Windows</h4>
+        
+        <ol>
+        <li>Download the Windows binary (<code>gho-static.exe</code>) from the <a href="https://github.com/mbtestfeed/gho-static/releases">releases page</a>.</li>
+        <li>Move it into a folder of its own, e.g. <code>C:\Tools\gho-static</code>.</li>
+        <li>Open PowerShell or Windows Terminal in that folder and run it:</li>
+        </ol>
+        
+        <pre><code>   .\gho-static.exe --generate mysite
+        </code></pre>
+        
+        <p>If Windows shows &ldquo;Windows protected your PC&rdquo;, click <strong>More info</strong>, then <strong>Run anyway</strong>.
+        4. To run it from any folder as just <code>gho-static</code>, add its folder to your <code>PATH</code>: search the Start menu for &ldquo;Edit environment variables for your account&rdquo;, select <strong>Path</strong>, click <strong>Edit</strong>, then <strong>New</strong>, and enter the folder, e.g. <code>C:\Tools\gho-static</code>. Open a new terminal for the change to take effect.</p>
+        
+        <h3 id="run-from-source">Run from source</h3>
+        
+        <pre><code>git clone https://github.com/mbtestfeed/gho-static.git
+        cd gho-static
+        go run main.go --generate ../mysite
+        </code></pre>
+        
+        <p>Use <code>go run main.go</code> in place of <code>gho-static</code> in any of the commands below. Paths are relative to the <code>gho-static</code> folder, so <code>../mysite</code> keeps your site outside of it.</p>
+        
+        <h2 id="quickstart">Quickstart</h2>
+        
+        <h3 id="create-your-first-site">Create your first site</h3>
+        
+        <pre><code>gho-static --generate mysite
+        </code></pre>
+        
+        <p>This asks how you&rsquo;d like to deploy the site, then creates a <code>mysite</code> folder with a starter site in it, and builds it into <code>mysite/build</code>. Basic site preferences can be edited at any time in <code>mysite/preferences.yaml</code>. Add <code>--yes</code> to skip the question, or <code>--clean</code> to start from a blank site without the example content.</p>
+        
+        <h3 id="add-a-new-page">Add a new page</h3>
+        
+        <pre><code>gho-static --generate content/projects mysite
+        </code></pre>
+        
+        <p>This adds a draft page at <code>mysite/content/projects/projects.md</code>, offers to add it to the menu, and rebuilds the site.</p>
+        
+        <h3 id="add-a-new-blog-post">Add a new blog post</h3>
+        
+        <pre><code>gho-static --generate content/blogs/my_first_post mysite
+        </code></pre>
+        
+        <p>This adds a draft post at <code>mysite/content/blogs/YYYYMMDD_my_first_post/post.md</code>, dated today, and rebuilds the site.</p>
+        
+        <p>New pages and posts only have their front matter and a heading. To add your content, edit the new markdown file, then rebuild the site (see below) to see your changes.</p>
+        
+        <h3 id="add-a-new-collection">Add a new collection</h3>
+        
+        <p>Blogs aren&rsquo;t the only collection you can have. To start a new one, generate its first post, e.g.:</p>
+        
+        <pre><code>gho-static --generate content/my_new_collection/my_first_post_in_new_collection mysite
+        </code></pre>
+        
+        <p>This creates <code>content/my_new_collection</code> with its own listing page, offers to add it to the menu, and adds the post inside it.</p>
+        
+        <p>If you don&rsquo;t want a blogs section, delete the <code>content/blogs</code> folder, and remove <code>blogs</code> from <code>nav_links</code> in <code>preferences.yaml</code> to stop it being warned about. The recent blogs sidebar is left out of sites without a <code>content/blogs</code> folder.</p>
+        
+        <h3 id="build-and-deploy">Build and deploy</h3>
+        
+        <pre><code>gho-static mysite
+        gho-static --drafts mysite
+        gho-static --deploy mysite
+        </code></pre>
+        
+        <p>The first command rebuilds the site after you edit it. The second goes through your drafts, asking which ones to publish. The third builds the site for publishing and deploys it.</p>
+        
+        <h2 id="flags">Flags</h2>
+        
+        <ul>
+        <li><code>-g, --generate &lt;path&gt;</code>: create a new site at <code>&lt;path&gt;</code>. If <code>&lt;path&gt;</code> is <code>content/&lt;name&gt;</code>, adds a draft page to an existing site instead. If it&rsquo;s <code>content/&lt;name&gt;/&lt;post&gt;</code>, adds a dated draft post.</li>
+        <li><code>-c, --clean</code>: with <code>-g</code>, generate markdown files with only their front matter, and a new site without the example content.</li>
+        <li><code>-y, --yes</code>: with <code>-g</code>, don&rsquo;t ask for a deployment method. With <code>--deploy</code>, fail instead of asking for anything that isn&rsquo;t set up.</li>
+        <li><code>--preview-publish</code>: build without drafts and unreleased pages, as publishing does, but with links that still work locally. Otherwise they&rsquo;re built, with a warning on each.</li>
+        <li><code>-p, --publish</code>: build for publishing. Each page is written as <code>folder/index.html</code>, and drafts and unreleased pages are left out. Can&rsquo;t be used with <code>--preview-publish</code>.</li>
+        <li><code>--drafts</code>: go through each draft page, asking whether to publish it. With <code>--yes</code>, publishes them all.</li>
+        <li><code>--deploy</code>: build for publishing and deploy, using the deployment method the site is set up for, or asking for one.</li>
+        <li><code>--deployment-method &lt;github-pages|none&gt;</code>: set up the site&rsquo;s build folder for deploying.</li>
+        <li><code>--repo &lt;url&gt;</code>: with <code>--deployment-method github-pages</code>, the GitHub repo to push the build folder to.</li>
+        </ul>
+        
+        <p>Single-letter flags can be combined, e.g. <code>-cy</code>. Run <code>gho-static</code> with no arguments for the full usage text.</p>
+        
+        <h2 id="editing-your-site">Editing your site</h2>
+        
+        <h3 id="site-layout">Site layout</h3>
+        
+        <pre><code>mysite/
+          preferences.yaml      site name, menu links, colours, fonts, sidebars
+          index.md              the home page
+          index.css             styles for every page
+          index.html            the page layout every page is built into
+          content/              your pages and posts
+          structure/            the header, footer and sidebars
+          static/               files copied as they are into the build
+          build/                the built site (don't edit this, it's replaced on each build)
+        </code></pre>
+        
+        <h3 id="preferences">Preferences</h3>
+        
+        <p><code>preferences.yaml</code> holds the site&rsquo;s settings: its name, the menu links (<code>nav_links</code>, as content folder names in menu order), colours for light and dark mode, the font, logo and favicon, the default author for new pages, and the intro sidebar&rsquo;s image, text and social links. Rebuild the site after changing it.</p>
+        
+        <h3 id="markdown-pages">Markdown pages</h3>
+        
+        <p>Each page is a folder in <code>content/</code> holding a markdown file named after it, e.g. <code>content/about/about.md</code>. Each page starts with front matter:</p>
+        
+        <pre><code>---
+        title: About
+        summary: A short description, shown in listings and search results.
+        author: Your Name
+        published: 2026-01-31
+        edited: 2026-02-14
+        draft: false
+        toc: false
+        tags: [news, updates]
+        ---
+        
+        # About
+        
+        Your content, in markdown.
+        </code></pre>
+        
+        <ul>
+        <li><code>title</code>: the page&rsquo;s title, shown in the browser tab and listings.</li>
+        <li><code>summary</code>: shown under the page&rsquo;s link in listings, and used as its description.</li>
+        <li><code>author</code>, <code>published</code>, <code>edited</code>: shown in the byline. Pages without a published date are asked for one when building.</li>
+        <li><code>draft: true</code>: shows the page with a DRAFT warning, and leaves it out when publishing, deploying or building with <code>--preview-publish</code>.</li>
+        <li><code>toc: true</code>: adds a table of contents built from the page&rsquo;s headings.</li>
+        <li><code>tags</code>: a list of tags, each linking to a page listing everything with that tag.</li>
+        </ul>
+        
+        <p>The body is standard markdown, with tables, fenced code blocks, footnotes and strikethrough. HTML can be used as well.</p>
+        
+        <p>To include an image in a page or post, put it in the same folder as its markdown file in <code>content/</code>, then link to it from the markdown with <code>![picture caption](./my-image.png)</code>.</p>
+        
+        <h3 id="blog-posts-and-listings">Blog posts and listings</h3>
+        
+        <p>A folder with an HTML file in it, like <code>content/blogs/blogs.html</code>, is a listing page: it lists each of its subfolders&rsquo; posts, newest first, after an intro from the markdown file in the same folder. Post folders are named <code>YYYYMMDD_&lt;name&gt;</code>, each with a <code>post.md</code> inside. Posts in the same listing get previous and next links.</p>
+        
+        <h3 id="css-and-javascript">CSS and JavaScript</h3>
+        
+        <ul>
+        <li><code>index.css</code> styles the whole site. The <code>{{...}}</code> values in it are filled in from <code>preferences.yaml</code>, so change colours and fonts there. Your own CSS can use them as variables, e.g. <code>color: var(--banner-color)</code>.</li>
+        <li>Each page&rsquo;s folder has a <code>.css</code> and <code>.js</code> file named after it, e.g. <code>content/about/about.css</code>. These only apply to the pages in that folder, so you can style one page without affecting the rest.</li>
+        <li>The header, footer and sidebars each have their own HTML and CSS in <code>structure/</code>. Turn the sidebars on or off with <code>show_intro_sidebar</code> and <code>show_recent_blogs_sidebar</code> in <code>preferences.yaml</code>.</li>
+        <li>Files in <code>static/</code> are copied into <code>build/static</code> as they are, for fonts, downloads or images used on several pages.</li>
+        </ul>
+        
+        <p>Empty CSS and JavaScript files are left out of the build, so there&rsquo;s no need to delete them.</p>
+        
+        <h2 id="more">More</h2>
+        
+        <p>See <a href="https://mbtestfeed.github.io">mbtestfeed.github.io</a> for more documentation, and report bugs or request features on the <a href="https://github.com/mbtestfeed/gho-static/issues">issues page</a>.</p>
     </div>
     <div id="intro-sidebar">
         
@@ -43,16 +230,16 @@
     <div id="recent-blogs">
         <ul class="recent-links">
             <li>
-                <a href="./blogs/20261015_example_1/">Example 1</a>
-                <div class="recent-date">2026/10/15</div>
+                <a href="./blogs/20261016_example_1/">Example 1</a>
+                <div class="recent-date">2026/10/16</div>
             </li>
             <li>
-                <a href="./blogs/20260915_example_2/">Example 2</a>
-                <div class="recent-date">2026/09/15</div>
+                <a href="./blogs/20260916_example_2/">Example 2</a>
+                <div class="recent-date">2026/09/16</div>
             </li>
             <li>
-                <a href="./blogs/20260815_example_3/">Example 3</a>
-                <div class="recent-date">2026/08/15</div>
+                <a href="./blogs/20260816_example_3/">Example 3</a>
+                <div class="recent-date">2026/08/16</div>
             </li>
         </ul>
     </div>
