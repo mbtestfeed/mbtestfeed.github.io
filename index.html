@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Build version: df08044b-d13e-4df3-973b-f4e0c48b2b45 -->
+    <!-- Build version: 3d99ee97-65ef-4768-a2ad-d33660a56a6e -->
     <title>Gho-Static</title>
     <meta property="og:title" content="Gho-Static">
     <link rel="icon" href="./static/img/favicon.ico" sizes="any">
@@ -140,9 +140,9 @@
         <li><code>--preview-publish</code>: build without drafts and unreleased pages, as publishing does, but with links that still work locally. Otherwise they&rsquo;re built, with a warning on each.</li>
         <li><code>-p, --publish</code>: build for publishing. Each page is written as <code>folder/index.html</code>, and drafts and unreleased pages are left out. Can&rsquo;t be used with <code>--preview-publish</code>.</li>
         <li><code>--drafts</code>: go through each draft page, asking whether to publish it. With <code>--yes</code>, publishes them all.</li>
-        <li><code>--deploy</code>: build for publishing and deploy, using the deployment method the site is set up for, or asking for one.</li>
-        <li><code>--deployment-method &lt;github-pages|none&gt;</code>: set up the site&rsquo;s build folder for deploying.</li>
-        <li><code>--repo &lt;url&gt;</code>: with <code>--deployment-method github-pages</code>, the GitHub repo to push the build folder to.</li>
+        <li><code>--deploy</code>: build for publishing and deploy, using the deployment method and settings saved in <code>preferences.yaml</code>, or asking for any that aren&rsquo;t.</li>
+        <li><code>--deployment-method &lt;github-pages|none&gt;</code>: set up the site&rsquo;s build folder for deploying, and save the method in <code>preferences.yaml</code>.</li>
+        <li><code>--deploy-setting &lt;name=value&gt;</code>: a setting for the deployment method, e.g. <code>username=&lt;name&gt;</code> for GitHub Pages, used instead of (and saved over) the one in <code>preferences.yaml</code>. Can be given more than once. Secret settings, such as API keys, are never saved: give them with this, in a <code>GHO_STATIC_&lt;METHOD&gt;_&lt;SETTING&gt;</code> environment variable, or when asked.</li>
         </ul>
         
         <p>Single-letter flags can be combined, e.g. <code>-cy</code>. Run <code>gho-static</code> with no arguments for the full usage text.</p>
@@ -164,7 +164,7 @@
         
         <h3 id="preferences">Preferences</h3>
         
-        <p><code>preferences.yaml</code> holds the site&rsquo;s settings: its name, the menu links (<code>nav_links</code>, as content folder names in menu order), colours for light and dark mode, the font, logo and favicon, the default author for new pages, and the intro sidebar&rsquo;s image, text and social links. Rebuild the site after changing it.</p>
+        <p><code>preferences.yaml</code> holds the site&rsquo;s settings: its name, the menu links (<code>nav_links</code>, as content folder names in menu order), colours for light and dark mode, the font, logo and favicon, the default author for new pages, and the intro sidebar&rsquo;s image, text and social links. Rebuild the site after changing it. Its <code>deployment</code> section holds how the site is deployed: a <code>method</code> (<code>github-pages</code> or <code>none</code>) and that method&rsquo;s settings, such as GitHub Pages&rsquo; <code>username</code>, whose <code>&lt;username&gt;.github.io</code> repo the site is pushed to. It&rsquo;s saved when the site is generated or its deployment is set up, and used by <code>--deploy</code>.</p>
         
         <h3 id="markdown-pages">Markdown pages</h3>
         
