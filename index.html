@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Build version: 3d99ee97-65ef-4768-a2ad-d33660a56a6e -->
+    <!-- Build version: 836835cd-8a67-47c4-9329-1074a18757ea -->
     <title>Gho-Static</title>
     <meta property="og:title" content="Gho-Static">
     <link rel="icon" href="./static/img/favicon.ico" sizes="any">
@@ -11,17 +11,19 @@
     <link rel="stylesheet" href="./static/header.css">
     <link rel="stylesheet" href="./static/footer.css">
     <link rel="stylesheet" href="./static/intro-sidebar.css">
-    <link rel="stylesheet" href="./static/recent-blogs.css">
+    <link rel="stylesheet" href="./static/recent-activity.css">
 </head>
 <body>
     <div id="header">
-        <a class="header-title" href="./"><img class="header-logo" src="./static/img/gho_stephanie_64x64.svg" alt="">Gho-Static</a>
+        <a class="header-title" href="./"><img class="header-logo" src="./static/img/gho_stephanie_64x64.svg" alt=""><span class="header-title-text">Gho-Static</span>
+        </a>
         <details class="header-nav">
             <summary aria-label="Menu"><span></span><span></span><span></span></summary>
             <div class="header-menu">
             <ul>
                 <li><a href="./about/">About</a></li>
                 <li><a href="./blogs/">Blogs</a></li>
+                <li><a href="./gallery/">Gallery</a></li>
                 <li><a href="./contact/">Contact</a></li>
             </ul>
             </div>
@@ -32,6 +34,8 @@
         <h1 id="gho-static">Gho-Static</h1>
         
         <p>Gho-Static is a simple static site generator, designed to make deploying easy. You write your pages in markdown, style them with CSS, and Gho-Static builds them into a plain HTML site you can open locally or publish to GitHub Pages with a single command.</p>
+        
+        <p>Gho-Static is intentionally simple. It&rsquo;s for making and deploying websites without interactive content, such as brochureware, blogs or portfolios. By design, it doesn&rsquo;t use any JavaScript by default. You&rsquo;re welcome to add your own JavaScript to pages for more advanced features, if you can write it yourself, but that&rsquo;s at your own risk. If Gho-Static doesn&rsquo;t do what you need, you&rsquo;re welcome to suggest or make changes on <a href="https://github.com/mbtestfeed/gho-static">GitHub</a>, but <a href="https://www.merriam-webster.com/slang/bean-soup-theory">it may just not be for you</a>, and that&rsquo;s okay.</p>
         
         <h2 id="requirements">Requirements</h2>
         
@@ -120,7 +124,7 @@
         
         <p>This creates <code>content/my_new_collection</code> with its own listing page, offers to add it to the menu, and adds the post inside it.</p>
         
-        <p>If you don&rsquo;t want a blogs section, delete the <code>content/blogs</code> folder, and remove <code>blogs</code> from <code>nav_links</code> in <code>preferences.yaml</code> to stop it being warned about. The recent blogs sidebar is left out of sites without a <code>content/blogs</code> folder.</p>
+        <p>If you don&rsquo;t want a blogs section, delete the <code>content/blogs</code> folder, and remove <code>blogs</code> from <code>nav_links</code> in <code>preferences.yaml</code> to stop it being warned about.</p>
         
         <h3 id="build-and-deploy">Build and deploy</h3>
         
@@ -130,6 +134,8 @@
         </code></pre>
         
         <p>The first command rebuilds the site after you edit it. The second goes through your drafts, asking which ones to publish. The third builds the site for publishing and deploys it.</p>
+        
+        <p>When deploying to GitHub Pages, your site is served at <code>&lt;username&gt;.github.io</code>, and any of your other repos with Pages turned on is served at <code>&lt;username&gt;.github.io/&lt;repo&gt;</code>. If one of your content folders shares its name with such a repo, the repo&rsquo;s site takes over that path, and your page can&rsquo;t be reached. To fix this, either rename the folder, rename the repo, or turn Pages off on the repo.</p>
         
         <h2 id="flags">Flags</h2>
         
@@ -203,12 +209,21 @@
         
         <p>A folder with an HTML file in it, like <code>content/blogs/blogs.html</code>, is a listing page: it lists each of its subfolders&rsquo; posts, newest first, after an intro from the markdown file in the same folder. Post folders are named <code>YYYYMMDD_&lt;name&gt;</code>, each with a <code>post.md</code> inside. Posts in the same listing get previous and next links.</p>
         
+        <h3 id="special-collections">Special collections</h3>
+        
+        <p>Two folder names in <code>content/</code> are reserved, and work differently from other collections:</p>
+        
+        <ul>
+        <li><code>content/gallery</code>: the gallery page shows each post as a square image tile, using the first image in the post&rsquo;s folder (alphabetically), or a grey placeholder image if it has none. Each gallery post shows its markdown, then every image in its folder, in alphabetical order.</li>
+        <li><code>content/tags</code>: the tags page lists every tag used on the site, and is built again as a page for each tag, listing the pages that have it. These pages are made from the tags in your pages&rsquo; front matter at each build, so the folder holds no posts of its own. Without it, tags are still shown, but don&rsquo;t link anywhere.</li>
+        </ul>
+        
         <h3 id="css-and-javascript">CSS and JavaScript</h3>
         
         <ul>
         <li><code>index.css</code> styles the whole site. The <code>{{...}}</code> values in it are filled in from <code>preferences.yaml</code>, so change colours and fonts there. Your own CSS can use them as variables, e.g. <code>color: var(--banner-color)</code>.</li>
         <li>Each page&rsquo;s folder has a <code>.css</code> and <code>.js</code> file named after it, e.g. <code>content/about/about.css</code>. These only apply to the pages in that folder, so you can style one page without affecting the rest.</li>
-        <li>The header, footer and sidebars each have their own HTML and CSS in <code>structure/</code>. Turn the sidebars on or off with <code>show_intro_sidebar</code> and <code>show_recent_blogs_sidebar</code> in <code>preferences.yaml</code>.</li>
+        <li>The header, footer and sidebars each have their own HTML and CSS in <code>structure/</code>. Turn the sidebars on or off with <code>show_intro_sidebar</code> and <code>show_recent_activity_sidebar</code> in <code>preferences.yaml</code>.</li>
         <li>Files in <code>static/</code> are copied into <code>build/static</code> as they are, for fonts, downloads or images used on several pages.</li>
         </ul>
         
@@ -216,7 +231,9 @@
         
         <h2 id="more">More</h2>
         
-        <p>See <a href="https://mbtestfeed.github.io">mbtestfeed.github.io</a> for more documentation, and report bugs or request features on the <a href="https://github.com/mbtestfeed/gho-static/issues">issues page</a>.</p>
+        <p>See <a href="https://mbtestfeed.github.io">mbtestfeed.github.io</a> for more documentation, and report bugs or request features on the <a href="https://github.com/mbtestfeed/gho-static/issues">issues page</a>. See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> to contribute changes.</p>
+        
+        <p>Gho-Static is free to use for any purpose, at your own risk, under the <a href="LICENSE.md">MIT License</a>. If you build a site with it, please keep the &ldquo;Built with&rdquo; link in its footer.</p>
     </div>
     <div id="intro-sidebar">
         
@@ -227,19 +244,37 @@
             <li><a href="https://github.com/mbtestfeed/gho-static">github</a></li>
         </ul>
     </div>
-    <div id="recent-blogs">
+    <div id="recent-activity">
         <ul class="recent-links">
             <li>
-                <a href="./blogs/20261016_example_1/">Example 1</a>
+                <a href="./blogs/20261019_example_1/">Example 1</a>
+                <div class="recent-collection">Blogs</div>
+                <div class="recent-date">2026/10/19</div>
+            </li>
+            <li>
+                <a href="./gallery/20261019_all_kitten_pictures/">All kitten pictures</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/19</div>
+            </li>
+            <li>
+                <a href="./gallery/20261018_august_kittens_7/">August kittens 7</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/18</div>
+            </li>
+            <li>
+                <a href="./gallery/20261017_august_kittens_9/">August kittens 9</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/17</div>
+            </li>
+            <li>
+                <a href="./gallery/20261016_august_kittens_6/">August kittens 6</a>
+                <div class="recent-collection">Gallery</div>
                 <div class="recent-date">2026/10/16</div>
             </li>
             <li>
-                <a href="./blogs/20260916_example_2/">Example 2</a>
-                <div class="recent-date">2026/09/16</div>
-            </li>
-            <li>
-                <a href="./blogs/20260816_example_3/">Example 3</a>
-                <div class="recent-date">2026/08/16</div>
+                <a href="./gallery/20261015_august_kittens_4/">August kittens 4</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/15</div>
             </li>
         </ul>
     </div>
