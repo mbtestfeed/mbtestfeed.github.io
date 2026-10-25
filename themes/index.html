@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Build version: 7b5fa02c-28a8-4549-a2f8-c00c3dbb1f87 -->
+    <title>Themes - Gho-Static</title>
+    <meta property="og:title" content="Themes">
+    <link rel="icon" href="../static/img/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/theme.css">
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/header.css">
+</head>
+<body>
+    <div id="header">
+        <a class="header-title" href="../"><img class="header-logo" src="../static/img/gho_stephanie_64x64.svg" alt=""><span class="header-title-text">Gho-Static</span>
+        </a>
+        <details class="header-nav">
+            <summary aria-label="Menu"><span></span><span></span><span></span></summary>
+            <div class="header-menu">
+            <ul>
+                <li><a href="../about/">About</a></li>
+                <li><a href="../blogs/">Blogs</a></li>
+                <li><a href="../gallery/">Gallery</a></li>
+                <li><a href="../themes/">Themes</a></li>
+                <li><a href="../contact/">Contact</a></li>
+            </ul>
+            </div>
+        </details>
+    </div>
+    <div id="main">
+    <div id="content">
+        <h1 id="themes">Themes</h1>
+        
+        <p>This is a showcase of the themes available for Gho-Static. Each downloaded theme has its own page here, styled with that theme rather than the rest of the site&rsquo;s, with some example content to show how it looks.</p>
+        
+        <p>Gho-Static only comes with the <code>default_developer_ugly</code> theme downloaded. Themes that aren&rsquo;t in this site&rsquo;s <code>theme_templates/</code> folder are marked as not available locally, and have no page here until they&rsquo;re downloaded.</p>
+        
+        <p>To see every theme that can be downloaded now, and which are already in <code>theme_templates/</code>, run:</p>
+        
+        <pre><code>gho-static --list-themes mysite
+        </code></pre>
+        
+        <p>To download a theme and switch the site to it, or to download every theme, run:</p>
+        
+        <pre><code>gho-static --use-theme &lt;name&gt; mysite
+        gho-static --get-all-themes mysite
+        </code></pre>
+        
+        <p>This collection is left out when publishing or deploying.</p>
+        
+        <p>Your own themes go in <code>theme_templates/custom_themes</code>, which <code>--get-all-themes</code> never changes. To start one as a copy of the site&rsquo;s currently selected theme, run:</p>
+        
+        <pre><code>gho-static --generate theme_templates/&lt;new_name&gt; mysite
+        </code></pre>
+        
+        <p>These are the themes available when this version of Gho-Static was built, followed by this site&rsquo;s custom themes:</p>
+        
+        <ul class="theme-links">
+            <li>
+                <a class="theme-name" href="../themes/20261025_default_developer_ugly/">default_developer_ugly</a> <span class="theme-current">(currently selected)</span>
+                <div class="theme-summary">Plain and functional, with light blue banners. Gho-Static&#39;s default theme.</div>
+            </li>
+            <li>
+                <span class="theme-name">brochureware</span> <span class="theme-missing">(not available locally)</span>
+                <div class="theme-summary">A slightly more modern look (at the time of writing), like you might see on a company&#39;s site, with cards, soft shadows and an indigo accent.</div>
+            </li>
+        </ul>
+        <p>This site currently uses the <strong>default_developer_ugly</strong> theme, selected by <code>theme</code> in <code>settings.yaml</code>.</p>
+    </div>
+    <div id="intro-sidebar">
+        
+        <img class="intro-image" src="../static/img/gho_stephanie_64x64.svg" alt="">
+        <h2 class="intro-name">Gho-Static</h2>
+        <p class="intro-description">A simple static site generator, designed to make deploying easy</p>
+        <ul class="social-links">
+            <li><a href="https://github.com/mbtestfeed/gho-static">github</a></li>
+        </ul>
+    </div>
+    <div id="recent-activity">
+        <h2 class="recent-heading">Recent activity</h2>
+        <ul class="recent-links">
+            <li>
+                <a href="../blogs/20261025_example_1/">Example 1</a>
+                <div class="recent-collection">Blogs</div>
+                <div class="recent-date">2026/10/25</div>
+            </li>
+            <li>
+                <a href="../gallery/20261025_all_kitten_pictures/">All kitten pictures</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/25</div>
+            </li>
+            <li>
+                <a href="../gallery/20261024_august_kittens_7/">August kittens 7</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/24</div>
+            </li>
+            <li>
+                <a href="../gallery/20261023_august_kittens_9/">August kittens 9</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/23</div>
+            </li>
+            <li>
+                <a href="../gallery/20261022_august_kittens_6/">August kittens 6</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/22</div>
+            </li>
+            <li>
+                <a href="../gallery/20261021_august_kittens_4/">August kittens 4</a>
+                <div class="recent-collection">Gallery</div>
+                <div class="recent-date">2026/10/21</div>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <div id="footer">
+        <div class="footer-inner">
+            <div id="gho-static">Built with <a href="https://github.com/mbtestfeed/gho-static">mbtestfeed/gho-static</a></div>
+            <div id="footer-links"></div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/footer.css">
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/intro-sidebar.css">
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/recent-activity.css">
+    <link rel="stylesheet" href="../static/themes/themes.css">
+</body>
+</html>

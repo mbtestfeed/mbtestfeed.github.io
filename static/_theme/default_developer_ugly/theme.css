@@ -1,3 +1,9 @@
+/* GHO-STATIC THEME FILE: don't edit it. Running gho-static --get-all-themes
+   replaces it, losing any changes. To make your own version of this theme,
+   select it with gho-static --use-theme default_developer_ugly, then copy it
+   into theme_templates/custom_themes with gho-static --generate theme_templates/<new_name>,
+   and edit the copy. */
+
 /* Reset */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -5,8 +11,8 @@
     padding: 0;
 }
 
-/* The templated values below are filled in from preferences.yaml at build
-   time. Change them there rather than here. */
+/* The templated values below are filled in from theme_preferences.yaml at
+   build time. Change them there rather than here. */
 :root {
     --banner-color: #add8e6;
     --banner-text-color: #000000;
@@ -29,6 +35,16 @@
         --tag-color: #add8e6;
         --tag-text-color: #000000;
     }
+}
+
+/* The light/dark mode toggle on the themes showcase pages. Gho-Static adds
+   the colours it swaps to the end of this file when building. */
+.mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    margin: 1em 0;
+    cursor: pointer;
 }
 
 html, body {
@@ -89,6 +105,59 @@ body {
    lists have a class, and are styled on their own. */
 #content :is(ul, ol):not([class]) {
     padding-left: 20px;
+}
+
+/* GitHub-style alerts, e.g. > [!WARNING] in markdown. */
+.alert {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid var(--alert-color);
+    background-color: color-mix(in srgb, var(--alert-color) 10%, transparent);
+}
+
+.alert-note { --alert-color: #4493f8; }
+.alert-tip { --alert-color: #3fb950; }
+.alert-important { --alert-color: #ab7df8; }
+.alert-warning { --alert-color: #d29922; }
+.alert-caution { --alert-color: #f85149; }
+
+.alert-title {
+    font-weight: bold;
+    color: var(--alert-color);
+}
+
+/* The table of contents, from a <!-- toc --> line in markdown. */
+.toc {
+    margin: 1em 0;
+}
+
+.toc-title {
+    margin: 0 0 0.5em;
+    font-size: 1.2em;
+}
+
+.toc summary {
+    cursor: pointer;
+}
+
+.toc ul {
+    list-style: none;
+    line-height: 24px;
+}
+
+/* Each level of heading is a little smaller and lighter than the last. */
+.toc > ul > li {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.toc ul ul li {
+    font-size: 0.95em;
+    font-weight: normal;
+}
+
+.toc > ul > li > details > ul > li {
+    font-weight: 600;
 }
 
 /* A gallery page's images, centred, at full size up to the content's
@@ -182,5 +251,32 @@ a.tag:visited {
 
     .byline-date {
         margin-left: 0;
+    }
+}
+
+/* Added by Gho-Static: the colours the light/dark mode toggle swaps to. */
+:root:has(#mode-toggle:checked) {
+    color-scheme: dark;
+    --banner-color: #add8e6;
+    --banner-text-color: #000000;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --link-color: #8ab4f8;
+    --link-clicked-color: #c58af9;
+    --tag-color: #add8e6;
+    --tag-text-color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:has(#mode-toggle:checked) {
+        color-scheme: light;
+        --banner-color: #add8e6;
+        --banner-text-color: #000000;
+        --background-color: #ffffff;
+        --text-color: #000000;
+        --link-color: #0000ee;
+        --link-clicked-color: #551a8b;
+        --tag-color: #add8e6;
+        --tag-text-color: #000000;
     }
 }

@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Build version: 836835cd-8a67-47c4-9329-1074a18757ea -->
+    <!-- Build version: 7b5fa02c-28a8-4549-a2f8-c00c3dbb1f87 -->
     <title>About - Gho-Static</title>
     <meta property="og:title" content="About">
     <meta name="description" content="The site&#39;s about page.">
     <meta property="og:description" content="The site&#39;s about page.">
     <link rel="icon" href="../static/img/favicon.ico" sizes="any">
-    <link rel="stylesheet" href="../static/index.css">
-    <link rel="stylesheet" href="../static/header.css">
-    <link rel="stylesheet" href="../static/footer.css">
-    <link rel="stylesheet" href="../static/intro-sidebar.css">
-    <link rel="stylesheet" href="../static/recent-activity.css">
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/theme.css">
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/header.css">
 </head>
 <body>
     <div id="header">
@@ -26,6 +23,7 @@
                 <li><a href="../about/">About</a></li>
                 <li><a href="../blogs/">Blogs</a></li>
                 <li><a href="../gallery/">Gallery</a></li>
+                <li><a href="../themes/">Themes</a></li>
                 <li><a href="../contact/">Contact</a></li>
             </ul>
             </div>
@@ -35,9 +33,32 @@
     <div id="content">
         <div class="byline">
             <span class="byline-author">Written by Gho-Static</span>
-            <span class="byline-date">Published on 2026/10/19, last edited 2026/10/19</span>
+            <span class="byline-date">Published on 2026/10/25, last edited 2026/10/25</span>
         </div>
         <h1 id="about">About</h1>
+        
+        <blockquote class="alert alert-note">
+        <p class="alert-title">Note</p>
+        <p>This is the Gho-Static starter site&rsquo;s default page. If you&rsquo;re not viewing it on gho-static.com or mbtestfeed.github.io, whoever generated this site hasn&rsquo;t replaced it, so the site is likely unaffiliated with mbtestfeed or Gho-Static, who take no responsibility for this website&rsquo;s content.</p>
+        </blockquote>
+        
+        <p>Gho-Static is a project that&rsquo;s primarily built to satisfy the needs of one person - myself. There&rsquo;s enough static generators out there in the world that I could have really just used one of those, but I felt like building one myself - partially for learning, partially because it&rsquo;s an interesting (yet reasonably well defined) challenge, and partially for the joy of building something. There&rsquo;s nothing particularly wrong with any of the other static site generators - and if I&rsquo;m being honest, you should probably just pick one of the more popular ones if you&rsquo;re in the market. (I hear good things about <a href="https://github.com/gohugoio/hugo">Hugo</a>..?)</p>
+        
+        <p>I chose Go as the baseline language behind it because&hellip; I like Go? Does there need to be much more reason? It&rsquo;s a well supported language, which makes a very nice compromise between developer experience and speed.</p>
+        
+        <p>Gho-Static fits in a slightly weird space (like most static website generators), in that if you understand it well enough to use it then you probably don&rsquo;t need it. They&rsquo;re technical enough that they&rsquo;re not the most inviting to non-technical people, but not so complicated that most developers couldn&rsquo;t take a decent crack at them or write a dynamic website that fits their needs better. But I was looking at publishing a few sites for myself and my different projects (which we&rsquo;ll see if they ever go anywhere - I&rsquo;m a chronic project starter, less so a project finisher&hellip;), so I thought this seemed like a way to make that a little easier to manage.</p>
+        
+        <p>The vision is that you can write markdown files, maybe tinker with a little CSS, add JavaScript (if you&rsquo;re really daring), run a couple of commands and&hellip; Hey! You&rsquo;ve got a new website online! Nothing fancy - just some brochureware, maybe a blog and an image gallery/portfolio. That&rsquo;s what you need out of a website most of the time anyway, right?</p>
+        
+        <p>There&rsquo;s a certain sort of beauty in keeping your website simple, isn&rsquo;t there? There&rsquo;s practically nothing there to hack - which is increasingly a concern in the age of AI. Upkeep is minimal, load times are fast, SEO is decent out of the box - your time is precious and your web presence is valuable.</p>
+        
+        <p>But at the same time it&rsquo;s interesting to see just how much functionality and usefulness you can fit into a &ldquo;simple&rdquo; idea, and we&rsquo;ll see just how far that I get.</p>
+        
+        <h2 id="about-me">About me</h2>
+        
+        <p>Gho-Static was started by <a href="https://github.com/mbtestfeed">mbtestfeed</a> / Michael Ball / Bubbles (to friends) - a &ldquo;FullStack DevOps Engineer&rdquo; from Aotearoa New Zealand, who tends to be thrown at problems other people don&rsquo;t want to think about and does their best to make something decent out of the situation. I like to work with people to try and find the right solution for their problem (and mostly, I think, do okay at it), and occasionally get distracted down some bizarre boondoggle. If you think you&rsquo;ve got a problem that you&rsquo;d like to pay me to take a look at, or if you just feel like reaching out, contact me via hello @ gho-static . com</p>
+        
+        <p>Outside of tech, I make things (often badly) for fun and enjoy learning new skills. Woodworking, welding, jewelry, sewing - all sorts of things, I&rsquo;m very easy to nerd-snipe.</p>
     </div>
     <div id="intro-sidebar">
         
@@ -49,36 +70,37 @@
         </ul>
     </div>
     <div id="recent-activity">
+        <h2 class="recent-heading">Recent activity</h2>
         <ul class="recent-links">
             <li>
-                <a href="../blogs/20261019_example_1/">Example 1</a>
+                <a href="../blogs/20261025_example_1/">Example 1</a>
                 <div class="recent-collection">Blogs</div>
-                <div class="recent-date">2026/10/19</div>
+                <div class="recent-date">2026/10/25</div>
             </li>
             <li>
-                <a href="../gallery/20261019_all_kitten_pictures/">All kitten pictures</a>
+                <a href="../gallery/20261025_all_kitten_pictures/">All kitten pictures</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/19</div>
+                <div class="recent-date">2026/10/25</div>
             </li>
             <li>
-                <a href="../gallery/20261018_august_kittens_7/">August kittens 7</a>
+                <a href="../gallery/20261024_august_kittens_7/">August kittens 7</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/18</div>
+                <div class="recent-date">2026/10/24</div>
             </li>
             <li>
-                <a href="../gallery/20261017_august_kittens_9/">August kittens 9</a>
+                <a href="../gallery/20261023_august_kittens_9/">August kittens 9</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/17</div>
+                <div class="recent-date">2026/10/23</div>
             </li>
             <li>
-                <a href="../gallery/20261016_august_kittens_6/">August kittens 6</a>
+                <a href="../gallery/20261022_august_kittens_6/">August kittens 6</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/16</div>
+                <div class="recent-date">2026/10/22</div>
             </li>
             <li>
-                <a href="../gallery/20261015_august_kittens_4/">August kittens 4</a>
+                <a href="../gallery/20261021_august_kittens_4/">August kittens 4</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/15</div>
+                <div class="recent-date">2026/10/21</div>
             </li>
         </ul>
     </div>
@@ -89,5 +111,8 @@
             <div id="footer-links"></div>
         </div>
     </div>
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/footer.css">
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/intro-sidebar.css">
+    <link rel="stylesheet" href="../static/_theme/default_developer_ugly/recent-activity.css">
 </body>
 </html>

@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Build version: 836835cd-8a67-47c4-9329-1074a18757ea -->
+    <!-- Build version: 7b5fa02c-28a8-4549-a2f8-c00c3dbb1f87 -->
     <title>Gho-Static</title>
     <meta property="og:title" content="Gho-Static">
     <link rel="icon" href="./static/img/favicon.ico" sizes="any">
-    <link rel="stylesheet" href="./static/index.css">
-    <link rel="stylesheet" href="./static/header.css">
-    <link rel="stylesheet" href="./static/footer.css">
-    <link rel="stylesheet" href="./static/intro-sidebar.css">
-    <link rel="stylesheet" href="./static/recent-activity.css">
+    <link rel="stylesheet" href="./static/_theme/default_developer_ugly/theme.css">
+    <link rel="stylesheet" href="./static/_theme/default_developer_ugly/header.css">
 </head>
 <body>
     <div id="header">
@@ -24,6 +21,7 @@
                 <li><a href="./about/">About</a></li>
                 <li><a href="./blogs/">Blogs</a></li>
                 <li><a href="./gallery/">Gallery</a></li>
+                <li><a href="./themes/">Themes</a></li>
                 <li><a href="./contact/">Contact</a></li>
             </ul>
             </div>
@@ -33,9 +31,57 @@
     <div id="content">
         <h1 id="gho-static">Gho-Static</h1>
         
+        <blockquote class="alert alert-warning">
+        <p class="alert-title">Warning</p>
+        <p>Gho-Static is still under active development, and a lot is likely to change. Use it at your own risk.</p>
+        </blockquote>
+        
         <p>Gho-Static is a simple static site generator, designed to make deploying easy. You write your pages in markdown, style them with CSS, and Gho-Static builds them into a plain HTML site you can open locally or publish to GitHub Pages with a single command.</p>
         
         <p>Gho-Static is intentionally simple. It&rsquo;s for making and deploying websites without interactive content, such as brochureware, blogs or portfolios. By design, it doesn&rsquo;t use any JavaScript by default. You&rsquo;re welcome to add your own JavaScript to pages for more advanced features, if you can write it yourself, but that&rsquo;s at your own risk. If Gho-Static doesn&rsquo;t do what you need, you&rsquo;re welcome to suggest or make changes on <a href="https://github.com/mbtestfeed/gho-static">GitHub</a>, but <a href="https://www.merriam-webster.com/slang/bean-soup-theory">it may just not be for you</a>, and that&rsquo;s okay.</p>
+        
+        <nav class="toc">
+        <h2 class="toc-title">Table of Contents</h2>
+        <ul>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><details>
+        <summary><a href="#installation">Installation</a></summary>
+        <ul>
+        <li><details>
+        <summary><a href="#download-a-published-binary">Download a published binary</a></summary>
+        <ul>
+        <li><a href="#on-windows">On Windows</a></li>
+        </ul>
+        </details></li>
+        <li><a href="#run-from-source">Run from source</a></li>
+        </ul>
+        </details></li>
+        <li><details>
+        <summary><a href="#quickstart">Quickstart</a></summary>
+        <ul>
+        <li><a href="#create-your-first-site">Create your first site</a></li>
+        <li><a href="#add-a-new-page">Add a new page</a></li>
+        <li><a href="#add-a-new-blog-post">Add a new blog post</a></li>
+        <li><a href="#add-a-new-collection">Add a new collection</a></li>
+        <li><a href="#build-and-deploy">Build and deploy</a></li>
+        </ul>
+        </details></li>
+        <li><a href="#flags">Flags</a></li>
+        <li><details>
+        <summary><a href="#editing-your-site">Editing your site</a></summary>
+        <ul>
+        <li><a href="#site-layout">Site layout</a></li>
+        <li><a href="#settings">Settings</a></li>
+        <li><a href="#themes">Themes</a></li>
+        <li><a href="#markdown-pages">Markdown pages</a></li>
+        <li><a href="#blog-posts-and-listings">Blog posts and listings</a></li>
+        <li><a href="#special-collections">Special collections</a></li>
+        <li><a href="#css-and-javascript">CSS and JavaScript</a></li>
+        </ul>
+        </details></li>
+        <li><a href="#more">More</a></li>
+        </ul>
+        </nav>
         
         <h2 id="requirements">Requirements</h2>
         
@@ -49,6 +95,11 @@
         <h2 id="installation">Installation</h2>
         
         <h3 id="download-a-published-binary">Download a published binary</h3>
+        
+        <blockquote class="alert alert-note">
+        <p class="alert-title">Note</p>
+        <p>There are no published binaries yet, so Gho-Static can&rsquo;t be installed this way. Run it from its source code instead (see below).</p>
+        </blockquote>
         
         <ol>
         <li>Go to the <a href="https://github.com/mbtestfeed/gho-static/releases">releases page</a> and download the binary for your operating system.</li>
@@ -97,7 +148,7 @@
         <pre><code>gho-static --generate mysite
         </code></pre>
         
-        <p>This asks how you&rsquo;d like to deploy the site, then creates a <code>mysite</code> folder with a starter site in it, and builds it into <code>mysite/build</code>. Basic site preferences can be edited at any time in <code>mysite/preferences.yaml</code>. Add <code>--yes</code> to skip the question, or <code>--clean</code> to start from a blank site without the example content.</p>
+        <p>This asks how you&rsquo;d like to deploy the site, then creates a <code>mysite</code> folder with a starter site in it, and builds it into <code>mysite/build</code>. Basic site settings can be edited at any time in <code>mysite/settings.yaml</code>. Add <code>--yes</code> to skip the question, or <code>--clean</code> to start from a blank site without the example content.</p>
         
         <h3 id="add-a-new-page">Add a new page</h3>
         
@@ -124,7 +175,7 @@
         
         <p>This creates <code>content/my_new_collection</code> with its own listing page, offers to add it to the menu, and adds the post inside it.</p>
         
-        <p>If you don&rsquo;t want a blogs section, delete the <code>content/blogs</code> folder, and remove <code>blogs</code> from <code>nav_links</code> in <code>preferences.yaml</code> to stop it being warned about.</p>
+        <p>If you don&rsquo;t want a blogs section, delete the <code>content/blogs</code> folder, and remove <code>blogs</code> from <code>nav_links</code> in <code>settings.yaml</code> to stop it being warned about.</p>
         
         <h3 id="build-and-deploy">Build and deploy</h3>
         
@@ -137,40 +188,91 @@
         
         <p>When deploying to GitHub Pages, your site is served at <code>&lt;username&gt;.github.io</code>, and any of your other repos with Pages turned on is served at <code>&lt;username&gt;.github.io/&lt;repo&gt;</code>. If one of your content folders shares its name with such a repo, the repo&rsquo;s site takes over that path, and your page can&rsquo;t be reached. To fix this, either rename the folder, rename the repo, or turn Pages off on the repo.</p>
         
+        <p>When deploying to Cloudflare Pages, your site is served at <code>&lt;project&gt;.pages.dev</code>, and the project is created the first time you deploy. Set the <code>account_id</code> and <code>project</code> settings (and optionally <code>domain</code>) with <code>--deploy-setting</code> or when asked, and give the API token in the <code>GHO_STATIC_CLOUDFLARE_PAGES_API_TOKEN</code> environment variable. Create the token with the Cloudflare Pages: Edit permission at <a href="https://dash.cloudflare.com/profile/api-tokens">https://dash.cloudflare.com/profile/api-tokens</a>. A domain bought elsewhere is linked to the project for you, but you still need to add a CNAME record pointing it at <code>&lt;project&gt;.pages.dev</code> with your domain&rsquo;s DNS provider. A root domain, such as <code>example.com</code>, needs its DNS moved to Cloudflare instead. Only changed files are uploaded on each deploy.</p>
+        
+        <pre><code>GHO_STATIC_CLOUDFLARE_PAGES_API_TOKEN=&lt;token&gt; gho-static --deployment-method cloudflare-pages --deploy-setting account_id=&lt;id&gt; --deploy-setting project=mysite --deploy-setting domain=blog.example.com mysite
+        </code></pre>
+        
         <h2 id="flags">Flags</h2>
         
         <ul>
-        <li><code>-g, --generate &lt;path&gt;</code>: create a new site at <code>&lt;path&gt;</code>. If <code>&lt;path&gt;</code> is <code>content/&lt;name&gt;</code>, adds a draft page to an existing site instead. If it&rsquo;s <code>content/&lt;name&gt;/&lt;post&gt;</code>, adds a dated draft post.</li>
+        <li><code>-h, --help, -u, --usage</code>: print the usage text and exit.</li>
+        <li><code>-g, --generate &lt;path&gt;</code>: create a new site at <code>&lt;path&gt;</code>. If <code>&lt;path&gt;</code> is <code>content/&lt;name&gt;</code>, adds a draft page to an existing site instead. If it&rsquo;s <code>content/&lt;name&gt;/&lt;post&gt;</code>, adds a dated draft post. If it&rsquo;s <code>theme_templates/&lt;name&gt;</code>, copies the site&rsquo;s currently selected theme into a new custom theme (see Themes, below).</li>
         <li><code>-c, --clean</code>: with <code>-g</code>, generate markdown files with only their front matter, and a new site without the example content.</li>
         <li><code>-y, --yes</code>: with <code>-g</code>, don&rsquo;t ask for a deployment method. With <code>--deploy</code>, fail instead of asking for anything that isn&rsquo;t set up.</li>
         <li><code>--preview-publish</code>: build without drafts and unreleased pages, as publishing does, but with links that still work locally. Otherwise they&rsquo;re built, with a warning on each.</li>
         <li><code>-p, --publish</code>: build for publishing. Each page is written as <code>folder/index.html</code>, and drafts and unreleased pages are left out. Can&rsquo;t be used with <code>--preview-publish</code>.</li>
         <li><code>--drafts</code>: go through each draft page, asking whether to publish it. With <code>--yes</code>, publishes them all.</li>
-        <li><code>--deploy</code>: build for publishing and deploy, using the deployment method and settings saved in <code>preferences.yaml</code>, or asking for any that aren&rsquo;t.</li>
-        <li><code>--deployment-method &lt;github-pages|none&gt;</code>: set up the site&rsquo;s build folder for deploying, and save the method in <code>preferences.yaml</code>.</li>
-        <li><code>--deploy-setting &lt;name=value&gt;</code>: a setting for the deployment method, e.g. <code>username=&lt;name&gt;</code> for GitHub Pages, used instead of (and saved over) the one in <code>preferences.yaml</code>. Can be given more than once. Secret settings, such as API keys, are never saved: give them with this, in a <code>GHO_STATIC_&lt;METHOD&gt;_&lt;SETTING&gt;</code> environment variable, or when asked.</li>
+        <li><code>--deploy</code>: build for publishing and deploy, using the deployment method and settings saved in <code>settings.yaml</code>, or asking for any that aren&rsquo;t.</li>
+        <li><code>--deployment-method &lt;github-pages|cloudflare-pages|none&gt;</code>: set up the site&rsquo;s build folder for deploying, and save the method in <code>settings.yaml</code>.</li>
+        <li><code>--deploy-setting &lt;name=value&gt;</code>: a setting for the deployment method, e.g. <code>username=&lt;name&gt;</code> for GitHub Pages, used instead of (and saved over) the one in <code>settings.yaml</code>. Can be given more than once. Secret settings, such as API keys, are never saved: give them with this, in a <code>GHO_STATIC_&lt;METHOD&gt;_&lt;SETTING&gt;</code> environment variable, or when asked.</li>
+        <li><code>--use-theme &lt;name&gt;</code>: switch the site to the theme <code>&lt;name&gt;</code> and rebuild it, downloading the theme first if the site doesn&rsquo;t have it. See Themes, below.</li>
+        <li><code>--get-all-themes</code>: download every Gho-Static theme into <code>theme_templates/gho_static_themes/</code>, replacing any already there. Custom themes are left alone. Can also be used with <code>-g</code>, to download them into the new site.</li>
+        <li><code>--list-themes</code>: list the themes that can be downloaded and the site&rsquo;s own, marking which are downloaded, which are custom, and which one the site uses.</li>
         </ul>
         
-        <p>Single-letter flags can be combined, e.g. <code>-cy</code>. Run <code>gho-static</code> with no arguments for the full usage text.</p>
+        <p>Single-letter flags can be combined, e.g. <code>-cy</code>. Run <code>gho-static --help</code> for the full usage text.</p>
         
         <h2 id="editing-your-site">Editing your site</h2>
         
         <h3 id="site-layout">Site layout</h3>
         
         <pre><code>mysite/
-          preferences.yaml      site name, menu links, colours, fonts, sidebars
+          settings.yaml         site name, menu links, theme, sidebars, deployment
           index.md              the home page
-          index.css             styles for every page
           index.html            the page layout every page is built into
           content/              your pages and posts
-          structure/            the header, footer and sidebars
+          structure/            the header, footer and sidebars' HTML
+          theme_templates/      the site's look: each theme's CSS, colours and font
+            gho_static_themes/  themes from Gho-Static (don't edit these)
+            custom_themes/      your own themes
           static/               files copied as they are into the build
           build/                the built site (don't edit this, it's replaced on each build)
         </code></pre>
         
-        <h3 id="preferences">Preferences</h3>
+        <h3 id="settings">Settings</h3>
         
-        <p><code>preferences.yaml</code> holds the site&rsquo;s settings: its name, the menu links (<code>nav_links</code>, as content folder names in menu order), colours for light and dark mode, the font, logo and favicon, the default author for new pages, and the intro sidebar&rsquo;s image, text and social links. Rebuild the site after changing it. Its <code>deployment</code> section holds how the site is deployed: a <code>method</code> (<code>github-pages</code> or <code>none</code>) and that method&rsquo;s settings, such as GitHub Pages&rsquo; <code>username</code>, whose <code>&lt;username&gt;.github.io</code> repo the site is pushed to. It&rsquo;s saved when the site is generated or its deployment is set up, and used by <code>--deploy</code>.</p>
+        <p><code>settings.yaml</code> holds the site&rsquo;s settings: its name, the menu links (<code>nav_links</code>, as content folder names in menu order), its <code>theme</code> (see below), the logo and favicon, the default author for new pages, and the intro sidebar&rsquo;s image, text and social links. Rebuild the site after changing it. Its <code>deployment</code> section holds how the site is deployed: a <code>method</code> (<code>github-pages</code>, <code>cloudflare-pages</code> or <code>none</code>) and that method&rsquo;s settings, such as GitHub Pages&rsquo; <code>username</code>, whose <code>&lt;username&gt;.github.io</code> repo the site is pushed to, or Cloudflare Pages&rsquo; <code>account_id</code>, <code>project</code> and <code>domain</code>. It&rsquo;s saved when the site is generated or its deployment is set up, and used by <code>--deploy</code>.</p>
+        
+        <h3 id="themes">Themes</h3>
+        
+        <p>A theme is a folder in one of two places, and <code>theme</code> in <code>settings.yaml</code> names the one the site uses:</p>
+        
+        <ul>
+        <li><code>theme_templates/gho_static_themes/</code>: themes from Gho-Static itself. Don&rsquo;t edit these, as <code>--get-all-themes</code> replaces them.</li>
+        <li><code>theme_templates/custom_themes/</code>: your own themes, which <code>--get-all-themes</code> never changes. If a custom theme has the same name as a Gho-Static one, the custom one is used.</li>
+        </ul>
+        
+        <p>Only the chosen theme&rsquo;s CSS is built into the site. New sites come with <code>default_developer_ugly</code>, which is plain and functional. Others can be downloaded from the <a href="https://github.com/mbtestfeed/gho-static/tree/main/theme_templates/gho_static_themes">themes folder</a> of this repo, such as <code>brochureware</code>, a slightly more modern look (at the time of writing), like you might see on a company&rsquo;s site:</p>
+        
+        <pre><code>gho-static --use-theme brochureware mysite
+        gho-static --get-all-themes mysite
+        </code></pre>
+        
+        <p>The first switches the site to <code>brochureware</code>, downloading it if the site doesn&rsquo;t have it yet. The second downloads every theme into <code>theme_templates/gho_static_themes/</code>, replacing any already there, so any changes to their files are lost: keep site-specific CSS in your project files instead (see below). Themes are downloaded with git, over SSH if you&rsquo;re authenticated with GitHub, otherwise anonymously over HTTPS. Theme field names should stay reasonably stable, but they may change between versions in ways that break a theme&rsquo;s compatibility.</p>
+        
+        <p>Each theme holds:</p>
+        
+        <ul>
+        <li><code>theme.css</code>, styling the whole site.</li>
+        <li><code>structure/&lt;part&gt;/&lt;part&gt;.css</code>, styling the header, footer and each sidebar.</li>
+        <li><code>theme_preferences.yaml</code>, with the theme&rsquo;s colours for light and dark mode and its font. The <code>{{...}}</code> values in its CSS are filled in from these, so change them here rather than in the CSS.</li>
+        </ul>
+        
+        <p>When building, Gho-Static adds the colours for the showcase pages&rsquo; light/dark mode toggle to the end of each theme&rsquo;s <code>theme.css</code>, setting the same CSS variables the themes use (<code>--banner-color</code>, <code>--text-color</code> and so on). A theme using those variables gets the toggle without any CSS of its own.</p>
+        
+        <p>Theme names, in <code>settings.yaml</code>, front matter or the theme flags, must be a single folder name. A page whose theme isn&rsquo;t valid is left out of the build, with a warning.</p>
+        
+        <p>To make your own theme, start from a copy of the site&rsquo;s currently selected theme:</p>
+        
+        <pre><code>gho-static --generate theme_templates/my_theme mysite
+        </code></pre>
+        
+        <p>This copies it into <code>theme_templates/custom_themes/my_theme</code>, without the don&rsquo;t-edit warnings at the top of Gho-Static&rsquo;s theme files, and adds a page for it to the themes showcase. Edit its files, then select it with <code>--use-theme my_theme</code>. To base it on another theme, select that one first.</p>
+        
+        <p>A page can be styled with a different theme from the rest of the site by setting <code>theme: &lt;name&gt;</code> in its front matter. If the site doesn&rsquo;t have that theme, the page is left out of the build.</p>
+        
+        <p>New sites (other than clean ones) have a themes showcase collection, in <code>content/themes</code>, linked in the menu after the gallery. It lists the themes available when your copy of Gho-Static was built, then the site&rsquo;s custom themes, marked as custom, with a page for each one the site has, styled with that theme. It marks the currently selected theme. It&rsquo;s left out when publishing or deploying.</p>
         
         <h3 id="markdown-pages">Markdown pages</h3>
         
@@ -183,7 +285,6 @@
         published: 2026-01-31
         edited: 2026-02-14
         draft: false
-        toc: false
         tags: [news, updates]
         ---
         
@@ -197,11 +298,11 @@
         <li><code>summary</code>: shown under the page&rsquo;s link in listings, and used as its description.</li>
         <li><code>author</code>, <code>published</code>, <code>edited</code>: shown in the byline. Pages without a published date are asked for one when building.</li>
         <li><code>draft: true</code>: shows the page with a DRAFT warning, and leaves it out when publishing, deploying or building with <code>--preview-publish</code>.</li>
-        <li><code>toc: true</code>: adds a table of contents built from the page&rsquo;s headings.</li>
+        <li><code>theme</code>: styles the page with this theme instead of the site&rsquo;s (see Themes, below).</li>
         <li><code>tags</code>: a list of tags, each linking to a page listing everything with that tag.</li>
         </ul>
         
-        <p>The body is standard markdown, with tables, fenced code blocks, footnotes and strikethrough. HTML can be used as well.</p>
+        <p>The body is standard markdown, with tables, fenced code blocks, footnotes and strikethrough. HTML can be used as well. A <code>&lt;!-- toc --&gt;</code> line is replaced with a table of contents built from the page&rsquo;s headings. Quotes starting with <code>[!NOTE]</code>, <code>[!TIP]</code>, <code>[!IMPORTANT]</code>, <code>[!WARNING]</code> or <code>[!CAUTION]</code> are shown as alerts, as on GitHub.</p>
         
         <p>To include an image in a page or post, put it in the same folder as its markdown file in <code>content/</code>, then link to it from the markdown with <code>![picture caption](./my-image.png)</code>.</p>
         
@@ -211,19 +312,23 @@
         
         <h3 id="special-collections">Special collections</h3>
         
-        <p>Two folder names in <code>content/</code> are reserved, and work differently from other collections:</p>
+        <p>Three folder names in <code>content/</code> work differently from other collections:</p>
         
         <ul>
-        <li><code>content/gallery</code>: the gallery page shows each post as a square image tile, using the first image in the post&rsquo;s folder (alphabetically), or a grey placeholder image if it has none. Each gallery post shows its markdown, then every image in its folder, in alphabetical order.</li>
-        <li><code>content/tags</code>: the tags page lists every tag used on the site, and is built again as a page for each tag, listing the pages that have it. These pages are made from the tags in your pages&rsquo; front matter at each build, so the folder holds no posts of its own. Without it, tags are still shown, but don&rsquo;t link anywhere.</li>
+        <li><p><code>content/themes</code>: the themes showcase (see Themes, above), left out when publishing or deploying. Pages and collections can&rsquo;t be generated with this name.</p></li>
+        
+        <li><p><code>content/gallery</code>: the gallery page shows each post as a square image tile, using the first image in the post&rsquo;s folder (alphabetically), or a grey placeholder image if it has none. Each gallery post shows its markdown, then every image in its folder, in alphabetical order.</p></li>
+        
+        <li><p><code>content/tags</code>: the tags page lists every tag used on the site, and is built again as a page for each tag, listing the pages that have it. These pages are made from the tags in your pages&rsquo; front matter at each build, so the folder holds no posts of its own. Without it, tags are still shown, but don&rsquo;t link anywhere.</p></li>
         </ul>
         
         <h3 id="css-and-javascript">CSS and JavaScript</h3>
         
         <ul>
-        <li><code>index.css</code> styles the whole site. The <code>{{...}}</code> values in it are filled in from <code>preferences.yaml</code>, so change colours and fonts there. Your own CSS can use them as variables, e.g. <code>color: var(--banner-color)</code>.</li>
+        <li>The theme&rsquo;s CSS styles the whole site (see Themes, above). Your own CSS can use its colours as variables, e.g. <code>color: var(--banner-color)</code>.</li>
         <li>Each page&rsquo;s folder has a <code>.css</code> and <code>.js</code> file named after it, e.g. <code>content/about/about.css</code>. These only apply to the pages in that folder, so you can style one page without affecting the rest.</li>
-        <li>The header, footer and sidebars each have their own HTML and CSS in <code>structure/</code>. Turn the sidebars on or off with <code>show_intro_sidebar</code> and <code>show_recent_activity_sidebar</code> in <code>preferences.yaml</code>.</li>
+        <li>The header, footer and sidebars each have their own HTML in <code>structure/</code>, and their CSS in the theme. Turn the intro sidebar on or off with <code>show_intro_sidebar</code> in <code>settings.yaml</code>. The recent activity sidebar lists the newest posts from the collections in <code>collections_displayed_in_recent_sidebar</code> (<code>gallery</code> and <code>blogs</code> by default), and is left out if that list is empty or those collections have no posts to show.</li>
+        <li><code>index.js</code> is linked from every page, as is a <code>.js</code> file beside each structure template, e.g. <code>structure/header/header.js</code>, if you add one.</li>
         <li>Files in <code>static/</code> are copied into <code>build/static</code> as they are, for fonts, downloads or images used on several pages.</li>
         </ul>
         
@@ -231,9 +336,9 @@
         
         <h2 id="more">More</h2>
         
-        <p>See <a href="https://mbtestfeed.github.io">mbtestfeed.github.io</a> for more documentation, and report bugs or request features on the <a href="https://github.com/mbtestfeed/gho-static/issues">issues page</a>. See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> to contribute changes.</p>
+        <p>See <a href="https://mbtestfeed.github.io">mbtestfeed.github.io</a> for more documentation, and report bugs or request features on the <a href="https://github.com/mbtestfeed/gho-static/issues">issues page</a>. See <a href="https://github.com/mbtestfeed/gho-static/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> to contribute changes.</p>
         
-        <p>Gho-Static is free to use for any purpose, at your own risk, under the <a href="LICENSE.md">MIT License</a>. If you build a site with it, please keep the &ldquo;Built with&rdquo; link in its footer.</p>
+        <p>Gho-Static is free to use for any purpose, at your own risk, under the <a href="https://github.com/mbtestfeed/gho-static/blob/main/LICENSE.md">MIT License</a>. If you build a site with it, please keep the &ldquo;Built with&rdquo; link in its footer.</p>
     </div>
     <div id="intro-sidebar">
         
@@ -245,36 +350,37 @@
         </ul>
     </div>
     <div id="recent-activity">
+        <h2 class="recent-heading">Recent activity</h2>
         <ul class="recent-links">
             <li>
-                <a href="./blogs/20261019_example_1/">Example 1</a>
+                <a href="./blogs/20261025_example_1/">Example 1</a>
                 <div class="recent-collection">Blogs</div>
-                <div class="recent-date">2026/10/19</div>
+                <div class="recent-date">2026/10/25</div>
             </li>
             <li>
-                <a href="./gallery/20261019_all_kitten_pictures/">All kitten pictures</a>
+                <a href="./gallery/20261025_all_kitten_pictures/">All kitten pictures</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/19</div>
+                <div class="recent-date">2026/10/25</div>
             </li>
             <li>
-                <a href="./gallery/20261018_august_kittens_7/">August kittens 7</a>
+                <a href="./gallery/20261024_august_kittens_7/">August kittens 7</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/18</div>
+                <div class="recent-date">2026/10/24</div>
             </li>
             <li>
-                <a href="./gallery/20261017_august_kittens_9/">August kittens 9</a>
+                <a href="./gallery/20261023_august_kittens_9/">August kittens 9</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/17</div>
+                <div class="recent-date">2026/10/23</div>
             </li>
             <li>
-                <a href="./gallery/20261016_august_kittens_6/">August kittens 6</a>
+                <a href="./gallery/20261022_august_kittens_6/">August kittens 6</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/16</div>
+                <div class="recent-date">2026/10/22</div>
             </li>
             <li>
-                <a href="./gallery/20261015_august_kittens_4/">August kittens 4</a>
+                <a href="./gallery/20261021_august_kittens_4/">August kittens 4</a>
                 <div class="recent-collection">Gallery</div>
-                <div class="recent-date">2026/10/15</div>
+                <div class="recent-date">2026/10/21</div>
             </li>
         </ul>
     </div>
@@ -285,5 +391,8 @@
             <div id="footer-links"></div>
         </div>
     </div>
+    <link rel="stylesheet" href="./static/_theme/default_developer_ugly/footer.css">
+    <link rel="stylesheet" href="./static/_theme/default_developer_ugly/intro-sidebar.css">
+    <link rel="stylesheet" href="./static/_theme/default_developer_ugly/recent-activity.css">
 </body>
 </html>
